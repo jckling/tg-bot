@@ -27,9 +27,14 @@ def explore_wallpaper():
     enddate = datetime.strptime(image["enddate"], "%Y%m%d")
 
     # 版权信息
-    info = image["copyright"] + "\n" + url
+    info = image["copyright"] + "\n" + url.replace("1920x1080", "UHD")
 
     # 图片内容
     r = requests.get(url)
 
     return r.content, info
+
+
+if __name__ == '__main__':
+    content, info = explore_wallpaper()
+    print(info)
