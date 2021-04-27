@@ -11,11 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TOKEN: ${{ secrets.TOKEN }}
-      CHAT_ID: ${{ secrets.CHAT_ID }}
       USERNAME: ${{ secrets.PIXIV_USERNAME }}
       PASSWORD: ${{ secrets.PIXIV_PASSWORD }}
-      REFRESH_TOKEN: ${{ secrets.PIXIV_REFRESH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
@@ -27,6 +24,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Daily push
+      - name: Weekly push
         run: |
-          python ./bot.py
+          python ./pixiv/ranking.py
