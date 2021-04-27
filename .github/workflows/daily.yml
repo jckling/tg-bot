@@ -13,8 +13,8 @@ jobs:
     env:
       TOKEN: ${{ secrets.TOKEN }}
       CHAT_ID: ${{ secrets.CHAT_ID }}
-      USERNAME: ${{ secrets.PIXIV_USERNAME }}
-      PASSWORD: ${{ secrets.PIXIV_PASSWORD }}
+      PIXIV_USERNAME: ${{ secrets.PIXIV_USERNAME }}
+      PIXIV_PASSWORD: ${{ secrets.PIXIV_PASSWORD }}
       PIXIV_REFRESH_TOKEN: ${{ secrets.PIXIV_REFRESH_TOKEN }}
     steps:
       - uses: actions/checkout@v2

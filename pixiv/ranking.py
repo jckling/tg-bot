@@ -26,16 +26,17 @@ def download_images():
     json_result = api.illust_ranking('week')
     for illust in json_result.illusts:
         # 下载图片
-        api.download(illust.image_urls.large, fname=open('illust_%s.jpg' % (illust.id), 'wb'))
+        api.download(illust.image_urls.medium, fname=open('illust_%s.jpg' % (illust.id), 'wb'))
 
         # 打开图片
         f = open('illust_%s.jpg' % (illust.id), 'rb')
+        info = "{} ({})\n{}({})".format(illust.title, illust.id, illust.user.name, illust.user.id)
         photo = InputMediaPhoto(media=f,
-                                caption=illust.title)
+                                caption=info)
         lst.append(photo)
 
         # 打印信息
-        print("[%s] \t%s\t\n" % (illust.title, illust.image_urls.large), end="")
+        print("[%s] \t%s\t\n" % (illust.title, illust.image_urls.medium), end="")
 
     return lst
 
