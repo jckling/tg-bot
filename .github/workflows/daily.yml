@@ -15,7 +15,7 @@ jobs:
       CHAT_ID: ${{ secrets.CHAT_ID }}
       USERNAME: ${{ secrets.PIXIV_USERNAME }}
       PASSWORD: ${{ secrets.PIXIV_PASSWORD }}
-      REFRESH_TOKEN: ${{ secrets.PIXIV_REFRESH_TOKEN }}
+      PIXIV_REFRESH_TOKEN: ${{ secrets.PIXIV_REFRESH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
