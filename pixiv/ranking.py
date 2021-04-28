@@ -33,9 +33,13 @@ def download_images():
         filename = 'illust_{}.jpg'.format(illust.id)
 
         # 下载图片
-        api.download(illust.meta_single_page.original_image_url, fname=open(filename, 'wb'))
-        if file_too_large(filename):
+        if illust.meta_single_page.original_image_url:
+            api.download(illust.meta_single_page.original_image_url, fname=open(filename, 'wb'))
+            if file_too_large(filename):
+                api.download(illust.image_urls.large, fname=open(filename, 'wb'))
+        else:
             api.download(illust.image_urls.large, fname=open(filename, 'wb'))
+
         if file_too_large(filename):
             api.download(illust.image_urls.medium, fname=open(filename, 'wb'))
         if file_too_large(filename):
