@@ -16,7 +16,7 @@ tabs = ["综合", "插画", "动图", "漫画", "小说"]
 
 def file_too_large(filename):
     size = os.path.getsize(filename)
-    return size > 10 * 1024
+    return size > 10 * 1024 * 1024
 
 
 def download_images():
@@ -33,7 +33,11 @@ def download_images():
         filename = 'illust_{}.jpg'.format(illust.id)
 
         # 下载图片
-        api.download(illust.image_urls.medium, fname=open(filename, 'wb'))
+        api.download(illust.meta_single_page.original_image_url, fname=open(filename, 'wb'))
+        if file_too_large(filename):
+            api.download(illust.image_urls.large, fname=open(filename, 'wb'))
+        if file_too_large(filename):
+            api.download(illust.image_urls.medium, fname=open(filename, 'wb'))
         if file_too_large(filename):
             api.download(illust.image_urls.square_medium, fname=open(filename, 'wb'))
 
