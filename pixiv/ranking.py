@@ -14,6 +14,11 @@ REFRESH_TOKEN = os.environ.get("PIXIV_REFRESH_TOKEN")
 tabs = ["综合", "插画", "动图", "漫画", "小说"]
 
 
+def file_too_large(filename):
+    size = os.path.getsize(filename)
+    return size > 10 * 1024
+
+
 def download_images():
     # 登录
     api = AppPixivAPI()
@@ -24,12 +29,16 @@ def download_images():
 
     # [day, week, month, day_male, day_female, week_original, week_rookie, day_manga]
     json_result = api.illust_ranking('week')
-    for illust in json_result.illusts:
+    for illust in json_result.illusts[:10]:
+        filename = 'illust_{}.jpg'.format(illust.id)
+
         # 下载图片
-        api.download(illust.image_urls.medium, fname=open('illust_%s.jpg' % (illust.id), 'wb'))
+        api.download(illust.image_urls.medium, fname=open(filename, 'wb'))
+        if file_too_large(filename):
+            api.download(illust.image_urls.square_medium, fname=open(filename, 'wb'))
 
         # 打开图片
-        f = open('illust_%s.jpg' % (illust.id), 'rb')
+        f = open(filename, 'rb')
         info = "{} ({})\n{}({})".format(illust.title, illust.id, illust.user.name, illust.user.id)
         photo = InputMediaPhoto(media=f,
                                 caption=info)
