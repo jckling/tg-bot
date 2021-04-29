@@ -10,13 +10,12 @@ from telegram import Bot
 from bing.wallpaper import explore_wallpaper
 from pixiv.ranking import weekly_ranking
 
-TOKEN = os.environ.get("TOKEN")
+TOKEN = os.environ.get("TOKEN") or "1785476933:AAGqa5bLb--JULW1RzEUMm5fvTUYGVhkqZw"
 CHAT_ID = os.environ.get("CHAT_ID")
 
-if __name__ == '__main__':
-    # Bot
-    bot = Bot(token=TOKEN)
+bot = Bot(token=TOKEN)
 
+if __name__ == '__main__':
     # Bing 壁纸
     image, info = explore_wallpaper()
     bot.sendPhoto(

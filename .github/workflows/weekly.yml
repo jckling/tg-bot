@@ -1,9 +1,9 @@
-name: Daily push
+name: Weekly push
 
 on:
   push:
   schedule:
-    - cron: '30 22 * * *'
+    - cron: '45 23 * * 5'
 
 jobs:
   build:
@@ -13,6 +13,9 @@ jobs:
     env:
       TOKEN: ${{ secrets.TOKEN }}
       CHAT_ID: ${{ secrets.CHAT_ID }}
+      PIXIV_USERNAME: ${{ secrets.PIXIV_USERNAME }}
+      PIXIV_PASSWORD: ${{ secrets.PIXIV_PASSWORD }}
+      PIXIV_REFRESH_TOKEN: ${{ secrets.PIXIV_REFRESH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
@@ -24,6 +27,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Daily push
+      - name: Weekly push
         run: |
-          python ./cmd.py --daily
+          python ./cmd.py --weekly
