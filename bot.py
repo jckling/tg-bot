@@ -9,9 +9,14 @@ from telegram import Bot
 
 from bing.wallpaper import explore_wallpaper
 from pixiv.ranking import weekly_ranking
+from yamibo.maga import yuri_manga
 
-TOKEN = os.environ.get("TOKEN") or "1785476933:AAGqa5bLb--JULW1RzEUMm5fvTUYGVhkqZw"
+TOKEN = os.environ.get("TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
+
+# from telegram.utils import request
+# proxy = request.Request(proxy_url='http://127.0.0.1:7890')
+# bot = Bot(token=TOKEN, request=proxy)
 
 bot = Bot(token=TOKEN)
 
@@ -29,4 +34,12 @@ if __name__ == '__main__':
     bot.sendMediaGroup(
         chat_id=CHAT_ID,
         media=lst
+    )
+
+    # Yamibo 中文漫画更新
+    msg = yuri_manga()
+    bot.sendMessage(
+        chat_id=CHAT_ID,
+        text=msg,
+        parse_mode="HTML"
     )

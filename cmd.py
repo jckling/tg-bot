@@ -8,10 +8,12 @@ import argparse
 from bot import bot, CHAT_ID
 from bing.wallpaper import explore_wallpaper
 from pixiv.ranking import weekly_ranking
+from yamibo.maga import yuri_manga
 
 parser = argparse.ArgumentParser(description='Push message to telegram channel')
 parser.add_argument('--daily', action='store_true', help='daily task, including bing_wallpaper')
 parser.add_argument('--weekly', action='store_true', help='weekly task, including pixiv_illust_ranking')
+parser.add_argument('--daily_night', action='store_true', help='daily night task, including yamibo_manga')
 
 args = parser.parse_args()
 
@@ -30,4 +32,13 @@ if args.weekly:
     bot.sendMediaGroup(
         chat_id=CHAT_ID,
         media=lst
+    )
+
+if args.daily_night:
+    # Yamibo 中文漫画更新
+    msg = yuri_manga()
+    bot.sendMessage(
+        chat_id=CHAT_ID,
+        text=msg,
+        parse_mode="HTML"
     )
