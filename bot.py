@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @File     : test.py
+# @File     : bot.py
 # @Time     : 2021/04/16 13:13
 # @Author   : Jckling
 
@@ -9,7 +9,7 @@ from telegram import Bot
 
 from bing.wallpaper import explore_wallpaper
 from pixiv.ranking import weekly_ranking
-from yamibo.maga import yuri_manga
+from yamibo.manga import yuri_manga
 
 TOKEN = os.environ.get("TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")

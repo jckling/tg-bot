@@ -8,7 +8,7 @@ import argparse
 from bot import bot, CHAT_ID
 from bing.wallpaper import explore_wallpaper
 from pixiv.ranking import weekly_ranking
-from yamibo.maga import yuri_manga
+from yamibo.manga import yuri_manga
 
 parser = argparse.ArgumentParser(description='Push message to telegram channel')
 parser.add_argument('--daily', action='store_true', help='daily task, including bing_wallpaper')

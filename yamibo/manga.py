@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-# @File     : maga.py
+# @File     : manga.py
 # @Time     : 2021/04/30 10:48
 # @Author   : Jckling
-
 
 import os
 from collections import namedtuple
@@ -60,7 +59,7 @@ def yuri_manga():
             today = datetime.now()
             yesterday = today.date() - timedelta(days=1)
             if post_time.date() == today.date() or \
-                    (post_time.date() == yesterday and post_time.time() < today.time()):
+                    (post_time.date() == yesterday and post_time.time() > today.time()):
                 Manga_List.append(Manga(title.text, link, post_time))
         else:
             if post_time.date() != datetime.now().date():
