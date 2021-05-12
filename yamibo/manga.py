@@ -39,7 +39,7 @@ def yuri_manga():
     Manga_List = []
     for i in range(1, 5):
         url = "https://bbs.yamibo.com/forum-30-{}.html"
-        r = SESSION.get(url.format(i), headers=HEADERS)
+        r = SESSION.get(url.format(i), headers=HEADERS, verify=False)
 
         tree = html.fromstring(r.text)
         threads = tree.xpath('//tbody[starts-with(@id, "normalthread")]/tr')
