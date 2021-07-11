@@ -40,7 +40,9 @@ def yuri_manga():
     for i in range(1, 5):
         url = "https://bbs.yamibo.com/forum-30-{}.html"
         r = SESSION.get(url.format(i), headers=HEADERS)
-        print(r.text)
+
+        today = datetime.now()
+        yesterday = today.date() - timedelta(days=1)
 
         tree = html.fromstring(r.text)
         threads = tree.xpath('//tbody[starts-with(@id, "normalthread")]/tr')
@@ -57,25 +59,21 @@ def yuri_manga():
             # 发布时间
             time = thread.find('td[@class="by"]/em/span')
             post_time = datetime.strptime(time.text, "%Y-%m-%d %H:%M")
-            today = datetime.now()
-            yesterday = today.date() - timedelta(days=1)
             if post_time.date() == today.date() or \
                     (post_time.date() == yesterday and post_time.time() > today.time()):
                 Manga_List.append(Manga(title.text, link, post_time))
-            elif post_time.date() != datetime.now().date():
-                break
+        else:
+            # 整合成列表
+            template = """✨ <a href='{link}'>{title}</a>
 
-    # 整合成列表
-    template = """✨ <a href='{link}'>{title}</a>
+            """
+            message = """📢 <b>{date:%Y-%m-%d} <a href='https://bbs.yamibo.com/forum-30-1.html'>中文百合漫画</a></b>
 
-"""
-    message = """📢 <b>{date:%Y-%m-%d} <a href='https://bbs.yamibo.com/forum-30-1.html'>中文百合漫画</a></b>
+            """.format(date=datetime.now())
+            for manga in Manga_List:
+                message += template.format(title=manga.title, link=manga.link)
 
-""".format(date=datetime.now())
-    for manga in Manga_List:
-        message += template.format(title=manga.title, link=manga.link)
-
-    return message
+            return message
 
 
 if __name__ == '__main__':
