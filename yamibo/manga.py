@@ -39,7 +39,8 @@ def yuri_manga():
     Manga_List = []
     for i in range(1, 5):
         url = "https://bbs.yamibo.com/forum-30-{}.html"
-        r = SESSION.get(url.format(i), headers=HEADERS, verify=False)
+        r = SESSION.get(url.format(i), headers=HEADERS)
+        print(r.text)
 
         tree = html.fromstring(r.text)
         threads = tree.xpath('//tbody[starts-with(@id, "normalthread")]/tr')
@@ -61,8 +62,7 @@ def yuri_manga():
             if post_time.date() == today.date() or \
                     (post_time.date() == yesterday and post_time.time() > today.time()):
                 Manga_List.append(Manga(title.text, link, post_time))
-        else:
-            if post_time.date() != datetime.now().date():
+            elif post_time.date() != datetime.now().date():
                 break
 
     # 整合成列表
