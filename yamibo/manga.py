@@ -51,7 +51,11 @@ def yuri_manga():
             title = thread.find('th[@class="common"]')
             if title is None:
                 title = thread.find('th[@class="new"]')
-            title = title.find('a[@class="s xst"]')
+
+            try:
+                title = title.find('a[@class="s xst"]')
+            except AttributeError:
+                continue
 
             # 网址
             link = "https://bbs.yamibo.com/" + title.get("href")
