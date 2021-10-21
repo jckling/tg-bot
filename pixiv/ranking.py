@@ -16,7 +16,7 @@ tabs = ["综合", "插画", "动图", "漫画", "小说"]
 
 def file_too_large(filename):
     size = os.path.getsize(filename)
-    return size > 10 * 1024 * 1024
+    return size >= 10 * 1024 * 1024
 
 
 def download_images():
