@@ -3,10 +3,13 @@
 使用 telegram bot 往频道内定时推送消息：
 1. 每天早上 6:30 推送 Bing 壁纸
 2. 每天晚上 22:00 推送百合会漫画更新
-3. 每周六早上 7:45 推送 Pixiv 周榜
+3. 每天晚上 22:00 推送 Bilibili 动态更新
+4. 每周六早上 7:45 推送 Pixiv 周榜
 
-*注1：上面的时间是 Github Action 开始运行的时间，推送到频道内会有一定的延迟。*
-*注2：百合会论坛内容按积分限制查看，这里并不能绕过*
+注意事项
+- 上面的时间是 Github Action 开始运行的时间，推送到频道内会有一定的延迟；
+- Bing 每日壁纸的爬取是根据 UTC 时间，比北京时间慢 8h；
+- 百合会论坛内容按积分限制查看，这里并不能绕过，推送是 `昨日 22:00 ~ 今日 22:00` 之间发布的中文漫画（北京时间）。
 
 ## 说明
 
@@ -24,8 +27,14 @@
    - 如果使用 Chrome 可以从 [ChromeDriver - WebDriver for Chrome](https://chromedriver.chromium.org/downloads) 查看和下载对应版本的 chromedriver
 3. 百合会论坛 `Cookie` 获取参见👉 [V2EX Cookie 查看](https://github.com/jckling/Daily-Bonus//#v2ex)
 
+Bilibili 动态推送需要在 bilibili/uids.txt 添加 uid：
+- 网页端 - 点击头像进入个人空间 - https://space.bilibili.com/uid
+- 移动端- 点击头像进入个人空间 - 个人签名最右侧点击详情查看
+
+
 # 相关链接
 
 - [Bots: An introduction for developers](https://core.telegram.org/bots)
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
 - [upbit/pixivpy](https://github.com/upbit/pixivpy)
+- [SK-415/HarukaBot](https://github.com/SK-415/HarukaBot)

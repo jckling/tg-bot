@@ -5,8 +5,9 @@
 
 import argparse
 
-from bot import bot, CHAT_ID
+from bilibili.updates import ups_updates
 from bing.wallpaper import explore_wallpaper
+from bot import bot, CHAT_ID
 from pixiv.ranking import weekly_ranking
 from yamibo.manga import yuri_manga
 
@@ -37,6 +38,13 @@ if args.weekly:
 if args.daily_night:
     # Yamibo 中文漫画更新
     msg = yuri_manga()
+    bot.sendMessage(
+        chat_id=CHAT_ID,
+        text=msg,
+        parse_mode="HTML"
+    )
+    # Bilibili 动态更新
+    msg = ups_updates()
     bot.sendMessage(
         chat_id=CHAT_ID,
         text=msg,
