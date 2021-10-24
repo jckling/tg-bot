@@ -46,7 +46,7 @@ def updates(uid):
                 name = card['desc']['user_profile']['info'].get('uname')
                 # 模板
                 template = f"""
-                🎇 <a href=https://space.bilibili.com/'{uid}'>{name}</a> 🎇
+                🎇 <a href=https://space.bilibili.com/{uid}>{name}</a> 🎇
                 """
             # 整合成列表
             template += format(card, time)
