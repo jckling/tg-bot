@@ -68,6 +68,7 @@ def format(card, time):
 
 # 获取 up 主动态
 def ups_updates():
+    print(yesterday, today)
     message = """📢 <b>{date:%Y-%m-%d} Bilibili 动态</b>
         """.format(date=datetime.now())
     for uid in uid_lists():
