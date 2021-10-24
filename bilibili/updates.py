@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 import requests
 
 # 22:00 ~ 次日 22:00
-today = (datetime.now() + timedelta(hours=8)).replace(hour=22, minute=0, second=0)
+today = datetime.now().replace(hour=22, minute=0, second=0)
 yesterday = today - timedelta(days=1)
 
 types = {
@@ -68,7 +68,6 @@ def format(card, time):
 
 # 获取 up 主动态
 def ups_updates():
-    print(yesterday, today)
     message = """📢 <b>{date:%Y-%m-%d} Bilibili 动态</b>
         """.format(date=datetime.now())
     for uid in uid_lists():
