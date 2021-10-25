@@ -13,7 +13,7 @@
 
 ## 说明
 
-使用方式同 [jckling/Daily-Bonus](https://github.com/jckling/Daily-Bonus)，fork 本仓库设置 Secrets 就可以运行，自定义推送时间修改 .github/workflows/ 目录下对应的配置文件即可。
+使用方式同 [jckling/Daily-Bonus](https://github.com/jckling/Daily-Bonus)，star 一下，再 fork 本仓库设置 Secrets 就可以运行了，自定义推送时间修改 .github/workflows/ 目录下对应的配置文件即可。
 
 | Secret 名称            | 描述                   |
 | --------------------- | --------------------- |

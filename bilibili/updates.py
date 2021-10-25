@@ -46,8 +46,8 @@ def updates(uid):
                 name = card['desc']['user_profile']['info'].get('uname')
                 # 模板
                 template = f"""
-                🎇 <a href=https://space.bilibili.com/{uid}>{name}</a> 🎇
-                """
+🌈 <a href='https://space.bilibili.com/{uid}'>{name}</a>
+"""
             # 整合成列表
             template += format(card, time)
     return template
@@ -61,15 +61,15 @@ def format(card, time):
     # 地址
     url = "https://t.bilibili.com/" + card['desc']['dynamic_id_str']
     # 模板
-    template = f""" 📢 {time.time().strftime("%H:%M")} {type}：{url}
-                """
+    template = f"""● {time.time().strftime("%H:%M")} {type}：{url}
+"""
     return template
 
 
 # 获取 up 主动态
 def ups_updates():
-    message = """📢 <b>{date:%Y-%m-%d} Bilibili 动态</b>
-        """.format(date=datetime.now())
+    message = f"""📢 <b>{yesterday.strftime("%Y.%m.%d")} 22:00 ~ {today.strftime("%Y.%m.%d")} 22:00 <a href='https://www.bilibili.com'>Bilibili</a> 动态</b>
+        """
     for uid in uid_lists():
         message += updates(uid)
     return message
