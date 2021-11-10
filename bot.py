@@ -43,3 +43,12 @@ if __name__ == '__main__':
         text=msg,
         parse_mode="HTML"
     )
+
+    # Bilibili 动态更新
+    msg = ups_updates()
+    bot.sendMessage(
+        chat_id=CHAT_ID,
+        text=msg,
+        parse_mode="HTML",
+        disable_web_page_preview=True
+    )

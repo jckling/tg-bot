@@ -47,7 +47,7 @@ def download_images():
 
         # 打开图片
         f = open(filename, 'rb')
-        info = "{} ({})\n{}({})".format(illust.title, illust.id, illust.user.name, illust.user.id)
+        info = f"{illust.title} (https://www.pixiv.net/artworks/{illust.id})\n{illust.user.name} (https://www.pixiv.net/users/{illust.user.id})"
         photo = InputMediaPhoto(media=f,
                                 caption=info)
         lst.append(photo)
