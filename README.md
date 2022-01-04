@@ -6,10 +6,17 @@
 3. 每天晚上 22:00 推送 Bilibili 动态更新
 4. 每周六早上 7:45 推送 Pixiv 周榜
 
+
 注意事项
 - 上面的时间是 Github Action 开始运行的时间，推送到频道内会有一定的延迟；
 - Bing 每日壁纸的爬取是根据 UTC 时间，比北京时间慢 8h；
-- 百合会论坛内容按积分限制查看，这里并不能绕过，推送是 `昨日 22:00 ~ 今日 22:00` 之间发布的中文漫画（北京时间）。
+- 百合会论坛内容按积分限制查看，这里并不能绕过，推送是 `昨日 22:00 ~ 今日 22:00` 之间发布的中文漫画（北京时间）；
+- Bilibili 动态推送是 `昨日 22:00 ~ 今日 22:00` 之间的动态（最多 12 条）。
+
+
+Telegram 推送结果
+
+![](result.jpg)
 
 ## 说明
 
@@ -22,14 +29,16 @@
 | PIXIV_REFRESH_TOKEN   | Pixiv refresh_token   |
 | YAMIBO_COOKIES        | 百合会 Cookie           |
 
+
 1. token 从 [@BotFather](https://telegram.me/botfather) 获取，chat_id 就是 `@bot`（假设频道链接为 https://t.me/bot）
 2. Pixiv `refresh_token` 获取参见👉 [获取 Refresh Token](https://gist.github.com/upbit/6edda27cb1644e94183291109b8a5fde)
    - 如果使用 Chrome 可以从 [ChromeDriver - WebDriver for Chrome](https://chromedriver.chromium.org/downloads) 查看和下载对应版本的 chromedriver
 3. 百合会论坛 `Cookie` 获取参见👉 [V2EX Cookie 查看](https://github.com/jckling/Daily-Bonus//#v2ex)
 
+
 Bilibili 动态推送需要在 bilibili/uids.txt 添加 uid：
 - 网页端 - 点击头像进入个人空间 - https://space.bilibili.com/uid
-- 移动端- 点击头像进入个人空间 - 个人签名最右侧点击详情查看
+- 移动端 - 点击头像进入个人空间 - 个人签名最右侧点击详情查看
 
 
 # 相关链接
