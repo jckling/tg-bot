@@ -13,7 +13,7 @@ chardet==4.0.0
 cloudscraper==1.2.48
 feedparser==6.0.2
 idna==2.10
-lxml==4.6.5
+lxml==4.9.1
 multidict==5.1.0
 PixivPy==3.5.11
 pycares==4.2.0
