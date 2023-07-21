@@ -4,6 +4,7 @@
 # @Author   : Jckling
 
 import argparse
+import asyncio
 
 from bilibili.updates import ups_updates
 from bing.wallpaper import explore_wallpaper
@@ -21,34 +22,34 @@ args = parser.parse_args()
 if args.daily:
     # Bing 壁纸
     image, info = explore_wallpaper()
-    bot.sendPhoto(
+    asyncio.run(bot.sendPhoto(
         chat_id=CHAT_ID,
         photo=image,
         caption=info
-    )
+    ))
 
 if args.weekly:
     # Pixiv 插画周榜
     lst = weekly_ranking()
-    bot.sendMediaGroup(
+    asyncio.run(bot.sendMediaGroup(
         chat_id=CHAT_ID,
         media=lst
-    )
+    ))
 
 if args.daily_night:
     # Yamibo 中文漫画更新
     msg = yuri_manga()
-    bot.sendMessage(
+    asyncio.run(bot.sendMessage(
         chat_id=CHAT_ID,
         text=msg,
         parse_mode="HTML"
-    )
+    ))
 
     # Bilibili 动态更新
     msg = ups_updates()
-    bot.sendMessage(
+    asyncio.run(bot.sendMessage(
         chat_id=CHAT_ID,
         text=msg,
         parse_mode="HTML",
         disable_web_page_preview=True
-    )
+    ))
