@@ -3,12 +3,12 @@
 # @Time     : 2021/04/16 13:13
 # @Author   : Jckling
 
+import asyncio
 import os
-
-from telegram import Bot
 
 from bing.wallpaper import explore_wallpaper
 from pixiv.ranking import weekly_ranking
+from telegram import Bot
 from yamibo.manga import yuri_manga
 
 TOKEN = os.environ.get("TOKEN")
@@ -20,10 +20,11 @@ CHAT_ID = os.environ.get("CHAT_ID")
 
 bot = Bot(token=TOKEN)
 
-if __name__ == '__main__':
+
+async def main():
     # Bing 壁纸
     image, info = explore_wallpaper()
-    bot.sendPhoto(
+    await bot.sendPhoto(
         chat_id=CHAT_ID,
         photo=image,
         caption=info
@@ -31,14 +32,14 @@ if __name__ == '__main__':
 
     # Pixiv 插画周榜
     lst = weekly_ranking()
-    bot.sendMediaGroup(
+    await bot.sendMediaGroup(
         chat_id=CHAT_ID,
         media=lst
     )
 
     # Yamibo 中文漫画更新
     msg = yuri_manga()
-    bot.sendMessage(
+    await bot.sendMessage(
         chat_id=CHAT_ID,
         text=msg,
         parse_mode="HTML"
@@ -46,9 +47,13 @@ if __name__ == '__main__':
 
     # Bilibili 动态更新
     msg = ups_updates()
-    bot.sendMessage(
+    await bot.sendMessage(
         chat_id=CHAT_ID,
         text=msg,
         parse_mode="HTML",
         disable_web_page_preview=True
     )
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
