@@ -21,40 +21,43 @@ args = parser.parse_args()
 
 
 async def main():
-    if args.daily:
-        # Bing 壁纸
-        image, info = explore_wallpaper()
-        await bot.sendPhoto(
-            chat_id=CHAT_ID,
-            photo=image,
-            caption=info
-        )
+    try:
+        if args.daily:
+            # Bing 壁纸
+            image, info = explore_wallpaper()
+            await bot.sendPhoto(
+                chat_id=CHAT_ID,
+                photo=image,
+                caption=info
+            )
 
-    if args.weekly:
-        # Pixiv 插画周榜
-        lst = weekly_ranking()
-        await bot.sendMediaGroup(
-            chat_id=CHAT_ID,
-            media=lst
-        )
+        if args.weekly:
+            # Pixiv 插画周榜
+            lst = weekly_ranking()
+            await bot.sendMediaGroup(
+                chat_id=CHAT_ID,
+                media=lst
+            )
 
-    if args.daily_night:
-        # Yamibo 中文漫画更新
-        msg = yuri_manga()
-        await bot.sendMessage(
-            chat_id=CHAT_ID,
-            text=msg,
-            parse_mode="HTML"
-        )
+        if args.daily_night:
+            # Yamibo 中文漫画更新
+            msg = yuri_manga()
+            await bot.sendMessage(
+                chat_id=CHAT_ID,
+                text=msg,
+                parse_mode="HTML"
+            )
 
-        # Bilibili 动态更新
-        msg = ups_updates()
-        await bot.sendMessage(
-            chat_id=CHAT_ID,
-            text=msg,
-            parse_mode="HTML",
-            disable_web_page_preview=True
-        )
+            # Bilibili 动态更新
+            msg = ups_updates()
+            await bot.sendMessage(
+                chat_id=CHAT_ID,
+                text=msg,
+                parse_mode="HTML",
+                disable_web_page_preview=True
+            )
+    except Exception as e:
+        print("Error: %s" % e)
 
 
 asyncio.run(main())

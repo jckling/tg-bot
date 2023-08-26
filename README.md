@@ -21,7 +21,10 @@ Telegram 推送结果
 
 ## 说明
 
-使用方式同 [jckling/Daily-Bonus](https://github.com/jckling/Daily-Bonus)，star 一下，再 fork 本仓库设置 Secrets 就可以运行了，自定义推送时间修改 .github/workflows/ 目录下对应的配置文件即可。
+**支持本仓库请 star**
+
+使用方式同 [jckling/Daily-Bonus](https://github.com/jckling/Daily-Bonus)，fork 本仓库然后设置 Actions Secrets 就可以运行了。自定义推送时间修改 .github/workflows/ 目录下对应的配置文件即可，时间格式参考 [events-that-trigger-workflows#schedule](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule) 。
+
 
 | Secret 名称            | 描述                   |
 | --------------------- | --------------------- |
