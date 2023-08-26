@@ -44,7 +44,13 @@ Bilibili 动态推送需要在 bilibili/uids.txt 添加 uid：
 
 # 相关链接
 
+参阅
 - [Bots: An introduction for developers](https://core.telegram.org/bots)
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
 - [upbit/pixivpy](https://github.com/upbit/pixivpy)
 - [SK-415/HarukaBot](https://github.com/SK-415/HarukaBot)
+
+问题与解决
+- [How to Update All Python Packages - ActiveState](https://www.activestate.com/resources/quick-reads/how-to-update-all-python-packages/)
+- [python - RuntimeWarning: Enable tracemalloc to get the object allocation traceback - Not using async - Stack Overflow](https://stackoverflow.com/questions/75076069/runtimewarning-enable-tracemalloc-to-get-the-object-allocation-traceback-not)
+- [Coroutines and Tasks — Python 3.11.4 documentation](https://docs.python.org/3/library/asyncio-task.html)
